@@ -146,6 +146,5 @@ reset.addEventListener('click', ()=>{
 
 //✅✅conflicto cuando termina la animacion TEST y se agrega un texto, no se anima el texto, ARREGLAR MAÑANA LLEGANDO XD
 
-//❌❌Arreglar la animacion de los span en el elemento (.box h4), tendran una animacion alternada al estar activa la animacion del textElement
-//❌❌Terminar el CSS de los span para la animacion
-//❌❌Insertar el texto OFF y ON en un span, para cambiarlo por su clase cuando exista ANIMACION en su contenedor.
+//✅✅Arreglar la animacion de los span en el elemento (.box h4), tendran una animacion alternada al estar activa la animacion del textElement
+//✅✅Terminar el CSS de los span para la animacion
