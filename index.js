@@ -18,13 +18,6 @@ let h4 = document.querySelector('.box h4')
     // console.log(readWidth);
     // console.log(readStep);
     // ************************************************
-
-
-                       //tiempo de duración de la animacón
-    // console.log(txtInicial)
-    // 
-    // h4.classList.remove('')
-        
     
     //CUANDO TERMINE LA ANIMACION INICIAL P--TEST
     element.addEventListener('animationend', ()=>{
@@ -38,10 +31,6 @@ let h4 = document.querySelector('.box h4')
             element.textContent = "inserte texto"
         }, 2000)
     })
-// document.addEventListener('DOMContentLoaded', ()=>{
-    // console.log("DOM cargado");
-// })
-
 
 
 // ********************************************************
@@ -54,7 +43,7 @@ submit.addEventListener('click', () =>{
     //obtenemos el valor del input
     let txt = document.getElementById('text').value;
     
-
+    //Asignar animacion solo si el input tiene contenido
     if (!txt == ''){
         //Cambia de color los bordes del contenedor BOX
         box.classList.remove('box--reset')
@@ -63,55 +52,46 @@ submit.addEventListener('click', () =>{
         // ***********************
 
         element.style.animation = 'none';
-        
-        element.classList.remove('p--active')
         element.classList.remove('p--test')
         element.classList.remove('p--test-end')
         element.classList.add('p--active')
         element.style.animation = `var(--type), var(--borde)`
 
+        //añadimo una clase que activara la animacion de los puntos
         h4.classList.add('h4--active')
+    
+        //obtenemos el número de caracteres de la variable TXT
+        let caracteres = txt.length;
+
+        //Establecemos los valores del step y width a las variables
+        box.style.setProperty('--step', `${caracteres}`)
+        box.style.setProperty('--width', `${caracteres}ch`)
+        element.textContent = `${txt}`
+        // *******************************************
 
     
-    //obtenemos el número de caracteres de la variable TXT 
-    let caracteres = txt.length;
+        //El método getPropertyValue es de solo LECTURA
+        //Nos sirve para ver el numero que se esta asignando
+        // let pasosActive = estilo.getPropertyValue('--step');
+        // let widthActive = estilo.getPropertyValue('--width')
 
-    //Establecemos los valores del step y width a las variables
-    box.style.setProperty('--step', `${caracteres}`)
-    box.style.setProperty('--width', `${caracteres}ch`)
-    // *******************************************
-    element.classList.remove('p--test')
-    element.textContent = `${txt}`
-    element.classList.add('p--active')
-
-    // h4.textContent = 'Animate On'
-
-    
-    //El método getPropertyValue es de solo LECTURA ♪♪ pipipi ♪♪
-    // let pasosActive = estilo.getPropertyValue('--step');
-    // let widthActive = estilo.getPropertyValue('--width')
-
-    element.addEventListener('animationend', ()=>{
-        element.style.animation = 'var(--borde)'
-        setTimeout(() =>{
-            element.classList.remove('p--active')
-            element.classList.add('p--test-end')
-            box.classList.add('box--animate-end')
-            element.textContent = "inserte texto"
-            inputText.value = ''
-
-            h4.classList.remove('h4--active')
-        }, 2000)
-    })
+        element.addEventListener('animationend', ()=>{
+            element.style.animation = 'var(--borde)'
+            setTimeout(() =>{
+                element.classList.remove('p--active')
+                element.classList.add('p--test-end')
+                box.classList.add('box--animate-end')
+                element.textContent = "inserte texto"
+                inputText.value = ''
+                h4.classList.remove('h4--active')
+            }, 2000)
+        })
     } else{
-        // alert("Inserte texto")
         inputText.classList.add('input--valid')
         setTimeout(()=>{
             inputText.classList.remove('input--valid')
         }, 2000)
     }
-
-    
 })
 
 // ********************************************************
@@ -140,11 +120,6 @@ reset.addEventListener('click', ()=>{
 
 
 
-// FALTA TERMINAR DETALLES MUY IMPORTANTES -- REVISAR!!!
+// DETALLES
 
-//✅✅FALTA HABILITAR LA ANIMACION DEL BORDE DEL TEXTO Y MANTENERLO ACTIVO SIEMPRE
-
-//✅✅conflicto cuando termina la animacion TEST y se agrega un texto, no se anima el texto, ARREGLAR MAÑANA LLEGANDO XD
-
-//✅✅Arreglar la animacion de los span en el elemento (.box h4), tendran una animacion alternada al estar activa la animacion del textElement
-//✅✅Terminar el CSS de los span para la animacion
+//❌ - Agregar nuevas caracteristicas
