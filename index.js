@@ -38,7 +38,8 @@ let h4 = document.querySelector('.box h4')
 // ****************  EVENTO SUBMIT  ********************
 // ********************************************************
 // ********************************************************
-submit.addEventListener('click', () =>{
+submit.addEventListener('click', (e) =>{
+    e.preventDefault()
     
     //obtenemos el valor del input
     let txt = document.getElementById('text').value;
@@ -63,9 +64,10 @@ submit.addEventListener('click', () =>{
         //obtenemos el número de caracteres de la variable TXT
         let caracteres = txt.length;
 
-        //Establecemos los valores del step y width a las variables
+        //Establecemos los valores del step, width y time a las variables
         box.style.setProperty('--step', `${caracteres}`)
         box.style.setProperty('--width', `${caracteres}ch`)
+        box.style.setProperty('--time', `${caracteres * 0.10}s`)
         element.textContent = `${txt}`
         // *******************************************
 
@@ -106,6 +108,7 @@ reset.addEventListener('click', ()=>{
     //RESET DE LOS VALORES STEP Y WIDTH
     box.style.setProperty('--step', '0')
     box.style.setProperty('--width', '0ch')
+    box.style.setProperty('--time', '0s')
     
     //QUITAMOS LA CLASE ACTIVE, SI ES QUE ESTA DECLARADA
     //Y ASIGNAMOS UNA NUEVA CLASE PARA EL TEXTO
